@@ -1,10 +1,10 @@
 import { Header } from "./components/Header/Header"
+import { Sidebar } from "./components/Sidebar/Sidebar"
+import { Post } from "./components/Post/Post"
 
 
 import styles from './App.module.css'
-
 import './global.css'
-import { Sidebar } from "./components/Sidebar/Sidebar"
 
 
 
@@ -17,7 +17,7 @@ function App() {
         <Sidebar />
 
         <main>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore quidem exercitationem eligendi fuga in odio, molestiae, laudantium facilis sapiente voluptatibus dolores dolorem. Facere, fugit voluptas nulla tempora inventore debitis commodi.</p>
+         <Post />
         </main>
 
 

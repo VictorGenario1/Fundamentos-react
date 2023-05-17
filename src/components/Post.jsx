@@ -1,4 +1,4 @@
-import { Comment } from '../Comment/Comment'
+import { Comment } from './Comment'
 import styles from './Post.module.css'
 
 export function Post(){
@@ -6,7 +6,7 @@ export function Post(){
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                    <img className={styles.avatar} src="https://github.com/victorGenario.png" />
+                    <img  src="https://github.com/victorGenario.png" />
                     <div className={styles.authorInfo}>
                         <strong>Victor Genario</strong>
                         <span>Web Developer</span>

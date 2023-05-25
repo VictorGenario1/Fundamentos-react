@@ -4,11 +4,22 @@ import { ptBR } from 'date-fns/locale'
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import styles from './Post.module.css'
-import { useState } from 'react'
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react'
 
+export interface PostProps {
+    author: {
+      avatarUrl: string;
+      name: string;
+      role: string
+    },
+    content: {
+      type: 'paragraph' | 'link';
+      content: string
+    }[],
+    publishedAt: Date
+  }
 
-
-export function Post({ author, publishedAt, content }){
+export function Post({ author, publishedAt, content }: PostProps){
     const [comments, setComments] = useState([
         'Post Bacana !'
     ])
@@ -24,23 +35,23 @@ export function Post({ author, publishedAt, content }){
         addSuffix: true,
     })
 
-    function handleCreateNewComment(){
+    function handleCreateNewComment(event: FormEvent){
         event.preventDefault()
 
         setComments([...comments, newCommentText]);
         setNewCommentText('')
     }
 
-    function handleNewCommentChange(){
+    function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>){
         setNewCommentText(event.target.value);
         event.target.setCustomValidity('');
     }
 
-    function handleNewCommentInvalid(){
+    function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>){
         event.target.setCustomValidity('Esse campo é obrigatorio');
     }
 
-    function deleteComment(commentToDelete){
+    function deleteComment(commentToDelete: string){
         const commentsWhithoutDeletedOne = comments.filter(comment => {
             return comment != commentToDelete
             
